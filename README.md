@@ -1,126 +1,94 @@
-# Scala Kata Starter Code
+# Mars Rover Kata
 
-This repository contains starter code for attempting a Scala kata exercise.
+### 🛸 👽 💚 Mars Rover - TDD Kata 💚 👽 🛸
 
-It assumes that you have Java, Scala and Scala Build Tool (SBT) installed.
+## Setting the Scene
+You have been asked to create a program to move rovers around the surface of Mars!
+The surface of Mars is represented by a Plateau, you can make the assumption that the Plateau is a square/rectangular grid for the purpose of
+this task.
 
-If you haven't yet installed these, it's worth following the instructions on the Scala refresh exercises regarding Scala setup and installation
+Rovers navigate the Plateau so they can use their special cameras and robot arms to collect samples back to Planet Earth
+Representation of a Rover’s Position on the Plateau
 
-https://github.com/techreturners/scala_coding_exercises
+The Plateau is divided into a grid. A Rover’s position is represented by x and y co-ordinates and the letters N, S, W, E to represent North,
+South, West, East (the four cardinal compass points) respectively.
 
-## Instructions
+Example
 
-To utilise this starter code
+0 0 N
 
-### 1. Create a new folder on your computer that will house the starter code.
+This means the Rover is at the bottom-left corner facing in the North direction.
+Instructing a Rover to Move Around the Plateau
+To move a Rover around the Plateau, a string of letters is sent to a Rover.
+Here are the letters and their resultant action:
 
-For example if you are working on a bowling game kata, using the command line you would do:
+Letter Action
 
-```
-mkdir bowling-game-kata
-```
+L Spins the Rover 90 degrees Left without moving from the current coordinate point/
 
-### 2. Change to the directory and pull this code
+R Spins the Rover 90 degrees Right without moving from the current coordinate point/
 
-Next navigate to that directory and `git pull` this code
+M Moves the Rover forward by one grid point, maintaining the same
+heading (i.e. from where the Rover is facing (its orientation)).
 
-```
-cd bowling-game-kata
-```
+N.B. Assume that the square directly North from (x, y) is (x, y+1).
 
-Initialise git
+## Inputs into the Program
 
-```
-git init
-```
+First Line of Input to the Program
 
-And then pull the starter code
+The first line inputted into the program represents the upper-right coordinates of the Plateau.
 
-```
-git pull https://github.com/techreturners/lm-code-kata-scala-starter.git
-```
+5 5
 
-Once the code has been pulled then rename the branch to **main**
+This Plateau has maximum (x, y) co-ordinates of (5, 5).
 
-```
-git branch -M main
-```
+N.B. Assume that the lower-left coordinates is (0, 0).
+Subsequent Lines of Input into the Program - Input to Rovers
 
-### 3. Open up GitHub.com and create a new repository
+This represents the instructions to move the rovers.
 
-Go to GitHub.com and create a new repository.
+Each rover receives two lines of input.
 
-Give the repository a name - suggest naming the repository the same name as your folder
+First Line of Input to a Rover
 
-Make sure it is **Private**
+The Rover’s position is represented by two integers representing the X and Y coordinates and a letter representing where the Rover is facing (its
+orientation).
 
-Then leave everything else as blank. So do NOT create a README, GitIgnore or Licence.
+1 2 N
 
-Click **Create repository**
+Second Line of Input to a Rover
 
-### 4. Copy URL of new repository
+A string of letters representing the instructions to move the Rover around the Plateau.
+Movement Rules
 
-You should then see a screen telling you how to push to the repository.
+Rovers move sequentially, this means that the first Rover needs to finish moving first before the next one can move.
+Output
 
-Copy the URL of the repository. For example if a user called **pluto** had created a repository called **bowling-game-kata** then the URL would be:
+For each Rover, the output represents its final position (final coordinates and where it is facing).
+Example Test Case
 
-https://github.com/pluto/bowling-game-kata.git
+Lines of Input to the Program:
 
-### 5. Push starter code back to repository
+5 5
 
-Then back on your computer whilst within your newly created directory. 
+1 2 N
 
-Configure your GitHub origin server (for where you will be pushing code back to)
+LMLMLMLMM
 
-```
-git remote add origin URL_YOU_COPIED
-```
+3 3 E
 
-Replacing the **URL_YOU_COPIED** with the correct URL. For example:
+MMRMMRMRRM
 
-```
-git remote add origin https://github.com/pluto/bowling-game-kata.git
-```
+Expected Output:
 
-Now you can push the code to your repository
+1 3 N
 
-```
-git push -u origin main
-```
+5 1 E
 
-### 6. Make sure you can run the tests
 
-You should now be able to run the Scala tests either from the command line or your editor (such as IntelliJ)
 
-```
-sbt test
-```
 
-Should produce output similar to the following:
 
-```
-[info] welcome to sbt 1.6.2 (Azul Systems, Inc. Java 11.0.14)
-[info] loading global plugins from /Users/someuser/.sbt/1.0/plugins
-[info] loading project definition from /Users/someuser/Developer/techreturners/yrtt/lm-code-kata-scala-starter/project
-[info] loading settings for project root from build.sbt ...
-[info] set current project to lm-code-kata-scala-starter (in build file:/Users/someuser/Developer/techreturners/yrtt/lm-code-kata-scala-starter/)
-[info] compiling 1 Scala source to /Users/someuser/Developer/techreturners/yrtt/lm-code-kata-scala-starter/target/scala-2.13/classes ...
-[info] compiling 1 Scala source to /Users/someuser/Developer/techreturners/yrtt/lm-code-kata-scala-starter/target/scala-2.13/test-classes ...
-[info] AppTest:
-[info] A string from the app
-[info] - should be Hi from Tech Returners
-[info] Run completed in 193 milliseconds.
-[info] Total number of tests run: 1
-[info] Suites: completed 1, aborted 0
-[info] Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
-[info] All tests passed.
-[success] Total time: 3 s, completed 30 Apr 2022, 22:05:47
-```
-
-If you do see it run the tests then you're all ready to go 🙌
-
-### 7. Utilise repository as normal
-
-Now you can continue to utilise the repository as normal, committing and pushing as normal.
 
 
